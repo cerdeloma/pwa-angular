@@ -5,10 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MenuComponent } from './components/menu/menu.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { ListarComponent } from './components/listar/listar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    CadastroComponent,
+    ListarComponent
   ],
   imports: [
     BrowserModule,
