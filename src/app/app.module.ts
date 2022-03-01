@@ -8,6 +8,8 @@ import { environment } from '../environments/environment';
 import { MenuComponent } from './components/menu/menu.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ListarComponent } from './components/listar/listar.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,9 @@ import { ListarComponent } from './components/listar/listar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
