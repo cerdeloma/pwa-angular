@@ -26,5 +26,16 @@
         ]
       }
     }
+  ], "dataGroups": [
+    {
+      "name": "exemplo-api",
+      "urls": [],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 10000,
+        "maxAge": "10h",
+        "timeout": "5s"
+      }
+    }
   ]
 }
