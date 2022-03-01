@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 import { MenuComponent } from './components/menu/menu.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ListarComponent } from './components/listar/listar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -23,6 +23,7 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    ReactiveFormsModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
