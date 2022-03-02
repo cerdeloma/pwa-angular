@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { pipe } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { NomeSobrenome } from 'src/app/models/Nome-Sobrenome';
 import { AppServicesService } from 'src/app/services/app-services.service';
@@ -12,40 +14,42 @@ export class ListarComponent implements OnInit {
 
   dados: any;
   key: any;
+  isEmpty = false;
+  isLoading!: boolean;
 
-  constructor(private appService: AppServicesService) { }
+  constructor(
+    private appService: AppServicesService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.appService.getData().pipe(
-      tap(x => {
-        this.key = Object.keys(x)
-      })
-    ).subscribe(
-      (res: any) => {
-        this.dados = Object.values(res);
-        console.log(this.key);
-      }
-    )
-    // .pipe(
-    //   map(x => (Object as any).values(x)),
-    // ).subscribe(
-    //   (res: any) => {
-    //     // console.log(res);
-    //     this.dados = res;
-    //   }
-    // )
+    this.getAll();
   }
+  
+  getAll() {
+    this.isLoading = true;
+    this.appService.getData().subscribe(
+        (res: any) => {
+          if (res) {
+            this.key = Object.keys(res)
+            this.dados = Object.values(res);
+          } else {
+            this.isEmpty = true;
+          }
 
-  onDelete(key?: any) {
-    this.appService.deleteData(key).subscribe(
-      (res: any) => {
-        console.log(res);
+          this.isLoading = false;
       }
     );
   }
 
-  onEdit() {
+  onDelete(key?: any) {
+    this.appService.deleteData(key).subscribe(
+      () => window.location.reload()
+    );
+  }
 
+  onEdit(key?: any, body?: any) {
+    this.router.navigate(['edit', key]);
   }
 
 }

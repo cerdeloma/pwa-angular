@@ -6,6 +6,7 @@ import { ListarComponent } from './components/listar/listar.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'cadastro'},
   {path: 'cadastro', component: CadastroComponent},
+  {path: 'edit/:id', component: CadastroComponent},
   {path: 'listar', component: ListarComponent},
 ];
 

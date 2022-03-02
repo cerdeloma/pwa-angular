@@ -2,6 +2,17 @@
     <div class="ui list" *ngFor="let dado of dados; let i = index">
         <div class="item">{{ dado.nome}} {{dado.sobrenome}}</div>
         <button class="ui button" (click)="onDelete(key[i])">apagar</button>
-        <button class="ui button" (click)="onEdit()">editar</button>
+        <button class="ui button" (click)="onEdit(key[i])">editar</button>
+    </div>
+
+    <div 
+        *ngIf="isLoading"
+        class="ui active centered inline loader"
+        style="overflow: hidden;"
+        >
+    </div>
+
+    <div *ngIf="isEmpty" class="display">
+        <p>is empty</p>
     </div>
 </div>

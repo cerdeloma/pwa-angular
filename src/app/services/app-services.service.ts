@@ -19,7 +19,15 @@ export class AppServicesService {
     return this.http.get(`${this.API}contato.json`);
   }
 
+  getDataById(id: any) {
+    return this.http.get(`${this.API}contato/${id}.json`)
+  }
+
   deleteData(id: any) {
     return this.http.delete(`${this.API}contato/${id}.json`);
+  }
+
+  editData(id: any, body: any) {
+    return this.http.patch(`${this.API}contato/${id}.json`, body);
   }
 }
