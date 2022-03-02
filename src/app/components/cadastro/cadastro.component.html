@@ -1,1 +1,22 @@
-<p>cadastro works</p>
+<div class="ui container">
+    <form [formGroup]="formDados" (ngSubmit)="submitForm()">
+        <label class="ui label" for="nome">Nome</label>
+        <br>
+        <input class="ui input" type="text" formControlName="nome">
+
+        <br>
+        <br>
+
+        <label class="ui label" for="sobrenome">Sobrenome</label>
+        <br>
+        <input class="ui input" type="text" formControlName="sobrenome">
+
+        <br>
+        <br>
+        <button class="ui button" type="submit">Enviar</button>
+
+        <br>
+        <br>
+        <button class="ui button">Enviar notificação</button>
+    </form>
+</div>
