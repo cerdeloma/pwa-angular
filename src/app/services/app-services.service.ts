@@ -16,6 +16,10 @@ export class AppServicesService {
   }
 
   getData() {
-    return this.http.get(`${this.API}/contato.json`);
+    return this.http.get(`${this.API}contato.json`);
+  }
+
+  deleteData(id: any) {
+    return this.http.delete(`${this.API}contato/${id}.json`);
   }
 }

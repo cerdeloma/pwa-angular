@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppServicesService } from 'src/app/services/app-services.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private appService: AppServicesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +31,13 @@ export class CadastroComponent implements OnInit {
       sobrenome: this.formDados.get('sobrenome')?.value
     }
     this.appService.postForm(body).subscribe(
-      () => {console.log('enviado com sucesso')}
+      (res: any) => {
+        // console.log(res);
+        console.log('enviado com sucesso');
+        this.formDados.reset();
+        this.router.navigate(['listar']);
+      }
     );
-    console.log(this.formDados.value);
   }
 
 }
