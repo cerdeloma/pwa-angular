@@ -10,13 +10,15 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ListarComponent } from './components/listar/listar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     CadastroComponent,
-    ListarComponent
+    ListarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
