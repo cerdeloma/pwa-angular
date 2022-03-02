@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import Dexie from 'dexie';
 import { map, tap } from 'rxjs/operators';
+import { Contato } from '../models/contato';
 import { OnlineOfflineService } from './online-offline.service';
 
 @Injectable({
@@ -15,11 +17,39 @@ export class AppServicesService {
 
   constructor(
     private http: HttpClient,
-    private onlineOfflineService: OnlineOfflineService
+    private onlineOfflineService: OnlineOfflineService,
+    private angularFireDb: AngularFireDatabase
     ) {
       this.ouvirStatusConexao();
       this.iniciarIndexedDb();
     }
+
+  insert(contato: Contato) {
+    this.angularFireDb.list('contato').push(contato).then(
+      (result: any) => {
+        console.log(result);
+      }
+    );
+  }
+
+  update(contato: Contato, key: string) {
+    this.angularFireDb.list('contato').update(key, contato);
+  }
+
+  getAll() {
+    return this.angularFireDb.list('contato')
+    .snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(data => ({key: data.payload.key, ...data.payload.val() as any}))
+      })
+    )
+  }
+
+  delete(key: string) {
+    this.angularFireDb.object(`contato/${key}`).remove();
+  }
+  
 
   postForm(body: any) {
     return this.http.post(`${this.API}contato.json`, body);
@@ -70,7 +100,7 @@ export class AppServicesService {
 
   private ouvirStatusConexao() {
     this.onlineOfflineService.statusConexao.subscribe(
-      (online) => {
+      (online: any) => {
         if (online) {
           this.enviarIndexedDbParaApi();
         } else {

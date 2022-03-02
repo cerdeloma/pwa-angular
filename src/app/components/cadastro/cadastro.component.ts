@@ -67,9 +67,14 @@ export class CadastroComponent implements OnInit {
       nome: this.formDados.get('nome')?.value,
       sobrenome: this.formDados.get('sobrenome')?.value
     }
+    
+    const contato = {
+      nome: this.formDados.get('nome')?.value,
+      sobrenome: this.formDados.get('sobrenome')?.value
+    }
 
     if (this.isEdit) {
-      this.appService.editData(this.id, body).subscribe(
+      this.appService.editData(this.id, contato).subscribe(
         () => {
           console.log('editado com sucesso');
           this.formDados.reset();
