@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Dexie from 'dexie';
 import { EMPTY, of } from 'rxjs';
 import { mergeMap, switchMap, tap } from 'rxjs/operators';
 import { AppServicesService } from 'src/app/services/app-services.service';
+import { OnlineOfflineService } from 'src/app/services/online-offline.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,12 +18,17 @@ export class CadastroComponent implements OnInit {
   isEdit!: boolean;
   id!: string;
   contato: any;
+  contadorId = 0;
+
+  private db!: Dexie;
+  private table!: Dexie.Table<any, any>;
 
   constructor(
     private fb: FormBuilder,
     private appService: AppServicesService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private onlineOfflineService: OnlineOfflineService,
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +47,7 @@ export class CadastroComponent implements OnInit {
     );
 
     this.formDados = this.fb.group({
+      id: null,
       nome: null,
       sobrenome: null
     });
@@ -47,6 +55,7 @@ export class CadastroComponent implements OnInit {
 
   editForm(contato: any) {
     this.formDados.patchValue({
+      id: this.id,
       nome: contato.nome,
       sobrenome: contato.sobrenome
     })
@@ -54,6 +63,7 @@ export class CadastroComponent implements OnInit {
 
   submitForm() {
     const body = {
+      id: (Math.random() * (100 - 10) + 0),
       nome: this.formDados.get('nome')?.value,
       sobrenome: this.formDados.get('sobrenome')?.value
     }
@@ -66,7 +76,7 @@ export class CadastroComponent implements OnInit {
           this.router.navigate(['listar']);
         }
       );
-    } else {
+    } else if (!this.isEdit && this.onlineOfflineService.isOnline) {
       this.appService.postForm(body).subscribe(
         () => {
           console.log('enviado com sucesso');
@@ -74,6 +84,10 @@ export class CadastroComponent implements OnInit {
           this.router.navigate(['listar']);
         }
       );
+    } else {
+      this.appService.salvarIndexedDb(body);
+      this.formDados.reset();
+      alert('enviado para banco de dados local');
     }
   }
 

@@ -1,8 +1,8 @@
 <div class="ui container">
     <div class="ui list" *ngFor="let dado of dados; let i = index">
         <div class="item">{{ dado.nome}} {{dado.sobrenome}}</div>
-        <button class="ui button" (click)="onDelete(key[i])">apagar</button>
-        <button class="ui button" (click)="onEdit(key[i])">editar</button>
+        <button *ngIf="isOnline" class="ui button" (click)="onDelete(key[i])">apagar</button>
+        <button *ngIf="isOnline" class="ui button" (click)="onEdit(key[i])">editar</button>
     </div>
 
     <div 

@@ -4,6 +4,7 @@ import { pipe } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { NomeSobrenome } from 'src/app/models/Nome-Sobrenome';
 import { AppServicesService } from 'src/app/services/app-services.service';
+import { OnlineOfflineService } from 'src/app/services/online-offline.service';
 
 @Component({
   selector: 'app-listar',
@@ -16,10 +17,12 @@ export class ListarComponent implements OnInit {
   key: any;
   isEmpty = false;
   isLoading!: boolean;
+  isOnline: boolean = this.onlineOfflineService.isOnline;
 
   constructor(
     private appService: AppServicesService,
-    private router: Router
+    private router: Router,
+    private onlineOfflineService: OnlineOfflineService
     ) { }
 
   ngOnInit(): void {
