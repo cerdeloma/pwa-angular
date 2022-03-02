@@ -20,6 +20,6 @@ export class AppServicesService {
   }
 
   deleteData(id: any) {
-    // return this.http.delete(`${this.API}contato/${id}.json`);
+    return this.http.delete(`${this.API}contato/${id}.json`);
   }
 }

@@ -27,6 +27,11 @@ export class ListarComponent implements OnInit {
   }
 
   onDelete(i?: any) {
+    this.appService.deleteData(i).subscribe(
+      (res: any) => {
+        console.log(res);
+      }
+    );
   }
 
   onEdit() {
