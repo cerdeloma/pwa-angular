@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "pwa-angular-e6732"
+  },
+  "targets": {
+    "pwa-angular-e6732": {
+      "hosting": {
+        "pwa-angular": [
+          "pwa-angular-e6732"
+        ]
+      }
+    }
   }
 }
