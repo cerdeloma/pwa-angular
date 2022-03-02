@@ -17,13 +17,11 @@ export class ListarComponent implements OnInit {
   key: any;
   isEmpty = false;
   isLoading!: boolean;
-  isOnline: boolean = this.onlineOfflineService.isOnline;
 
   constructor(
     private appService: AppServicesService,
     private router: Router,
-    private onlineOfflineService: OnlineOfflineService
-    ) { }
+    ) {}
 
   ngOnInit(): void {
     this.getAll();

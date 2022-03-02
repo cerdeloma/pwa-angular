@@ -70,7 +70,7 @@ export class AppServicesService {
 
   private ouvirStatusConexao() {
     this.onlineOfflineService.statusConexao.subscribe(
-      (online) => {
+      (online: any) => {
         if (online) {
           this.enviarIndexedDbParaApi();
         } else {
