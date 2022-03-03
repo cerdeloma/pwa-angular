@@ -7,9 +7,10 @@ import { ListarComponent } from './components/listar/listar.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
-  {path: 'cadastro', component: CadastroComponent},
   {path: 'edit/:id', component: CadastroComponent},
+  // {path: 'cadastro', component: CadastroComponent},
   // {path: 'listar', component: ListarComponent},
+  {path: '**', redirectTo: 'home'},
 ];
 
 @NgModule({
