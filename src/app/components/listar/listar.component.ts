@@ -15,18 +15,21 @@ export class ListarComponent implements OnInit {
 
   dados$!: Observable<any>;
   key: any;
-  // isEmpty = false;
-  // isLoading!: boolean;
+  isOnline!: boolean;
 
   constructor(
     private appService: AppServicesService,
     private router: Router,
-    ) {}
+    private onlineOfflineService: OnlineOfflineService
+    ) {
+    }
 
-  ngOnInit(): void {
-    this.getAll();
+    ngOnInit(): void {
+      this.getAll();
+      this.ouvirStatusConexao();
+      this.onlineOfflineService.atualizaStatusConexao();
   }
-  
+
   getAll() {
     // this.isLoading = true;
     this.dados$ = this.appService.getAll();
@@ -53,6 +56,19 @@ export class ListarComponent implements OnInit {
 
   onEdit(key?: any, body?: any) {
     this.router.navigate(['edit', key]);
+  }
+
+  ouvirStatusConexao() {
+    this.onlineOfflineService.statusConexao.subscribe(
+      (online: any) => {
+        console.log(online);
+        if (online) {
+          this.isOnline = true;
+        } else {
+          this.isOnline = false;
+        }
+      }
+    );
   }
 
 }
