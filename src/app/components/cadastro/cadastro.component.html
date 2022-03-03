@@ -1,22 +1,26 @@
-<div class="ui container">
-    <form [formGroup]="formDados" (ngSubmit)="submitForm()">
-        <label class="ui label" for="nome">Nome</label>
-        <br>
-        <input class="ui input" type="text" formControlName="nome">
+<div class="container">
+  <div class="row">
 
-        <br>
-        <br>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <form [formGroup]="formDados" (ngSubmit)="submitForm()">
+        <div class="mb-3">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-control" type="text" formControlName="nome">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="sobrenome">Sobrenome</label>
+          <input class="form-control" type="text" formControlName="sobrenome">
+        </div>
 
-        <label class="ui label" for="sobrenome">Sobrenome</label>
-        <br>
-        <input class="ui input" type="text" formControlName="sobrenome">
+        <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Submit</button>
+        <button class="btn btn-light">Enviar notificação</button>
+      </form>
+    </div>
 
-        <br>
-        <br>
-        <button class="ui button" type="submit">Enviar</button>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <app-listar></app-listar>
+    </div>
 
-        <br>
-        <br>
-        <button class="ui button">Enviar notificação</button>
-    </form>
+  </div>
 </div>
+

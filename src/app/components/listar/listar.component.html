@@ -1,29 +1,43 @@
-<div class="ui container">
-    <ng-container *ngIf="dados$ | async as dados; else isLoading">
+<div>
+  <ng-container *ngIf="dados$ | async as dados; else isLoading">
 
-        <ng-container *ngIf="dados.length > 0; else isEmpty">
+    <ng-container *ngIf="dados.length > 0; else isEmpty">
 
-            <div class="ui list" *ngFor="let dado of dados">
-                <div class="item">{{ dado.nome}} {{dado.sobrenome}}</div>
-                <button class="ui button" (click)="onDelete(dado.key)">apagar</button>
-                <button class="ui button" (click)="onEdit(dado.key)">editar</button>
-            </div>
-
-        </ng-container>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col">Nome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dado of dados">
+              <!-- <th scope="row">{{ dado.length }}</th> -->
+              <td>{{ dado?.nome }} {{ dado?.sobrenome }}</td>
+              <td>
+                <div>
+                  <button class="btn btn-danger" style="margin-right: 6px;" (click)="onDelete(dado.key)">apagar</button>
+                  <button class="btn btn-primary" (click)="onEdit(dado.key)">editar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
     </ng-container>
 
-    <ng-template #isLoading>
-        <div 
-            class="ui active centered inline loader"
-            style="overflow: hidden;"
-            >
-        </div>
-    </ng-template>
+  </ng-container>
 
-    <ng-template #isEmpty>
-        <div *ngIf="isEmpty" class="display">
-            <p>is empty</p>
-        </div>
-    </ng-template>
+  <ng-template #isLoading>
+    <div
+        class=""
+        style="overflow: hidden;"
+        >
     </div>
+  </ng-template>
+
+  <ng-template #isEmpty>
+    <div *ngIf="isEmpty" class="display">
+        <p>is empty</p>
+    </div>
+  </ng-template>
+</div>
