@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginComponent } from './components/login/login.component';
     ListarComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,
