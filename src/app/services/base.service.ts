@@ -33,7 +33,7 @@ export abstract class BaseService<T extends {id: any}> {
   }
 
   iniciarIndexedDb() {
-    this.db = new Dexie('db-contato');
+    this.db = new Dexie('db-local');
     this.db.version(1).stores({
       [this.nomeTabela]: 'id'
     });
@@ -69,10 +69,10 @@ export abstract class BaseService<T extends {id: any}> {
   public async salvarIndexedDb(tabela: any) {
     try {
       await this.table.add(tabela);
-      // const todosContatos = await this.table.toArray();
-      // console.log('seguro foi salvo com indexedDb', todosContatos);
+      // const todasTarefas = await this.table.toArray();
+      // console.log('seguro foi salvo com indexedDb', todasTarefas);
     } catch (error) {
-      console.log('erro ao cadastrar contato no indexedDb', error);
+      console.log('erro ao cadastrar tarefa no indexedDb', error);
     }
   }
 
@@ -81,7 +81,7 @@ export abstract class BaseService<T extends {id: any}> {
     for (const dado of todosDados) {
       this.postForm(dado).subscribe();
       await this.table.delete(dado?.id);
-      // console.log(`Seguro com o id ${contato?.id} foi excluido com sucesso`)
+      // console.log(`Seguro com o id ${tarefa?.id} foi excluido com sucesso`)
     }
   }
 

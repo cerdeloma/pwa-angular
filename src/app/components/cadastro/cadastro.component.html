@@ -4,20 +4,21 @@
     <div class="col-xs-12 col-sm-12 col-md-6">
       <form [formGroup]="formDados" (ngSubmit)="submitForm()">
         <div class="mb-3">
-          <label class="form-label" for="nome">Nome</label>
-          <input class="form-control" type="text" formControlName="nome">
+          <label class="form-label" for="nome">Data</label>
+          <input class="form-control" type="date" formControlName="data">
         </div>
         <div class="mb-3">
-          <label class="form-label" for="sobrenome">Sobrenome</label>
-          <input class="form-control" type="text" formControlName="sobrenome">
+          <label class="form-label" for="sobrenome">Tarefa</label>
+          <input class="form-control" type="text" formControlName="tarefa">
         </div>
 
-        <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Submit</button>
-        <button class="btn btn-light">Enviar notificação</button>
+        <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Salvar</button>
+        <button *ngIf="isEdit" (click)="retornar()" class="btn btn-danger" style="margin-right: 6px;" type="button">Cancelar</button>
+        <button *ngIf="!isEdit" class="btn btn-light">Enviar notificação</button>
       </form>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div *ngIf="!isEdit" class="col-xs-12 col-sm-12 col-md-6">
       <app-listar></app-listar>
     </div>
 

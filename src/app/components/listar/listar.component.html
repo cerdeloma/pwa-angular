@@ -6,13 +6,15 @@
         <table class="table">
           <thead>
             <tr>
-              <th class="col px-0 pt-0">Nome</th>
+              <th class="col px-0 pt-0">Data</th>
+              <th class="col px-0 pt-0">Tarefa</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let dado of dados">
               <!-- <th scope="row">{{ dado.length }}</th> -->
-              <td>{{ dado?.nome }} {{ dado?.sobrenome }}</td>
+              <td>{{ dado?.data | date: 'dd/MM/yy' }}</td>
+              <td>{{ dado?.tarefa }}</td>
               <td>
                 <div>
                   <button class="btn btn-danger" style="margin-right: 6px;" (click)="onDelete(dado.key)">apagar</button>

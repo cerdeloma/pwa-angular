@@ -1,4 +1,4 @@
-export interface Contato {
+export interface Tarefas {
     id: any;
     nome: string;
     sobrenome: string;

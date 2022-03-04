@@ -17,7 +17,7 @@ export class CadastroComponent implements OnInit {
   formDados!: FormGroup;
   isEdit!: boolean;
   id!: string;
-  contato: any;
+  tarefa: any;
   contadorId = 0;
 
   private db!: Dexie;
@@ -41,40 +41,40 @@ export class CadastroComponent implements OnInit {
       }),
       switchMap(id => this.appService.getDataById(id))
     ).subscribe((res: any) => {
-        this.contato = res;
-        this.editForm(JSON.parse(JSON.stringify(this.contato)))
+        this.tarefa = res;
+        this.editForm(JSON.parse(JSON.stringify(this.tarefa)))
       }
     );
 
     this.formDados = this.fb.group({
       id: null,
-      nome: null,
-      sobrenome: null
+      data: null,
+      tarefa: null
     });
   }
 
-  editForm(contato: any) {
+  editForm(tarefa: any) {
     this.formDados.patchValue({
       id: this.id,
-      nome: contato.nome,
-      sobrenome: contato.sobrenome
+      data: tarefa.data,
+      tarefa: tarefa.tarefa
     })
   }
 
   submitForm() {
     const body = {
       id: (Math.random() * (100 - 10) + 0),
-      nome: this.formDados.get('nome')?.value,
-      sobrenome: this.formDados.get('sobrenome')?.value
+      data: this.formDados.get('data')?.value,
+      tarefa: this.formDados.get('tarefa')?.value
     }
-    
-    const contato = {
-      nome: this.formDados.get('nome')?.value,
-      sobrenome: this.formDados.get('sobrenome')?.value
+
+    const tarefa = {
+      data: this.formDados.get('data')?.value,
+      tarefa: this.formDados.get('tarefa')?.value
     }
 
     if (this.isEdit) {
-      this.appService.editData(this.id, contato).subscribe(
+      this.appService.editData(this.id, tarefa).subscribe(
         () => {
           console.log('editado com sucesso');
           this.formDados.reset();
@@ -94,6 +94,10 @@ export class CadastroComponent implements OnInit {
       this.formDados.reset();
       alert('enviado para banco de dados local');
     }
+  }
+
+  retornar() {
+    this.router.navigate(['']);
   }
 
 }
