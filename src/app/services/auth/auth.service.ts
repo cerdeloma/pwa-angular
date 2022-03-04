@@ -10,7 +10,8 @@ export class AuthService {
 
   constructor(
     private angularFireAuth: AngularFireAuth
-  ) {}
+  ) {
+  }
 
   async cadastrar(email: string, password: string) {
     try{

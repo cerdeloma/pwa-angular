@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.authService.obterUsuarioLogado();
     this.emailUsuario = window.sessionStorage.getItem('emailUser');
     this.userId = window.sessionStorage.getItem('idToken');
   }
