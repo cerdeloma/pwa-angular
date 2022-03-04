@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  emailUsuario!: any;
+  userId!: any;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.emailUsuario = window.sessionStorage.getItem('emailUser');
+    this.userId = window.sessionStorage.getItem('idToken');
+  }
 
   ngOnInit(): void {
+    this.getUsuarioLogado();
+  }
+
+  getUsuarioLogado() {
+    this.authService.obterUsuarioLogado();
+  }
+
+  logout() {
+    window.sessionStorage.removeItem('idToken');
+    window.sessionStorage.removeItem('emailUser');
+    this.userId = null;
+    this.emailUsuario = null;
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }

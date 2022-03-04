@@ -1,0 +1,22 @@
+<div class="main">
+
+  <div class="form-container">
+
+    <h1>Login</h1>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">E-mail</label>
+        <input class="form-control" type="email" [(ngModel)]="usuario.email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="senha">Senha</label>
+        <input class="form-control" type="password" [(ngModel)]="usuario.senha">
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="logar()">Entrar</button>
+      <button type="submit" class="btn btn-info" (click)="entrarComGoogle()">Entrar com Google</button>
+      <p>Criar uma nova conta <a href="#" (click)="cadastrar()">clique aqui</a></p>
+
+  </div>
+
+</div>
