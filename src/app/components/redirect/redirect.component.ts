@@ -14,6 +14,9 @@ export class RedirectComponent implements OnInit {
     private authService: AuthService
     ) {
     this.authService.obterUsuarioLogado();
+    setTimeout(() => {
+      window.location.reload();
+    }, 10);
     this.router.navigate(['home']);
   }
 
