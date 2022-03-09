@@ -30,7 +30,7 @@
     {
       "name": "apis",
       "urls": [
-        "https://pwa-angular-e6732-default-rtdb.firebaseio.com/*"
+        "https://pwa-angular-e6732-default-rtdb.firebaseio.com/*.json"
       ],
       "cacheConfig": {
         "strategy": "performance",
