@@ -14,9 +14,11 @@
           <input class="form-control" type="text" formControlName="tarefa">
         </div>
 
-        <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Salvar</button>
-        <button *ngIf="isEdit" (click)="retornar()" class="btn btn-danger" style="margin-right: 6px;" type="button">Cancelar</button>
-        <button *ngIf="!isEdit" class="btn btn-light" type="button">Enviar notificação</button>
+        <div class="grupo-de-btns">
+          <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Salvar</button>
+          <button *ngIf="isEdit" (click)="retornar()" class="btn btn-danger" style="margin-right: 6px;" type="button">Cancelar</button>
+          <button *ngIf="!isEdit" class="btn btn-light" type="button">Enviar notificação</button>
+        </div>
       </form>
     </div>
 

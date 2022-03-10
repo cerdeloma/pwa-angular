@@ -1,0 +1,15 @@
+.grupo-de-btns{
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 576px) {
+  .grupo-de-btns {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 100%;
+    }
+  }
+}
