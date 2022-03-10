@@ -46,7 +46,7 @@ export class ListarComponent implements OnInit {
 
   onDelete(key?: any) {
     this.appService.deleteData(key).subscribe(
-      () => window.location.reload()
+      () => this.getAll()
     );
   }
 

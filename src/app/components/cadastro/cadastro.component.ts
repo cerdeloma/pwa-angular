@@ -90,7 +90,7 @@ export class CadastroComponent implements OnInit {
         () => {
           console.log('enviado com sucesso');
           this.formDados.reset();
-          this.router.navigate(['listar']);
+          window.location.reload();
         }
       );
     } else {
