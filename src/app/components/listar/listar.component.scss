@@ -1,3 +1,8 @@
+.grupo-de-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
 .isOffline {
   margin-top: 36px;
   display: flex;
@@ -8,5 +13,16 @@
   img {
     width: 200px;
     margin-bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .grupo-de-btns {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-bottom: 4px;
+    }
   }
 }

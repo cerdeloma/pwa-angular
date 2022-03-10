@@ -16,9 +16,9 @@
               <td>{{ dado?.data | date: 'dd/MM/yy' }}</td>
               <td>{{ dado?.tarefa }}</td>
               <td>
-                <div>
-                  <button class="btn btn-danger" style="margin-right: 6px;" (click)="onDelete(dado.key)">apagar</button>
+                <div class="grupo-de-btns">
                   <button class="btn btn-primary" (click)="onEdit(dado.key)">editar</button>
+                  <button class="btn btn-danger" (click)="onDelete(dado.key)">apagar</button>
                 </div>
               </td>
             </tr>
