@@ -3,26 +3,32 @@
   <div class="row">
     <h1 *ngIf="isEdit" class="mt-4 mb-4">Edição</h1>
 
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-12">
       <form [formGroup]="formDados" (ngSubmit)="submitForm()">
-        <div class="mb-3">
+        <div class="mb-2">
           <label class="form-label" for="nome">Data</label>
           <input class="form-control" type="date" formControlName="data">
         </div>
+
+        <div class="mb-2">
+          <label class="form-label" for="nome">Nome/Apelido</label>
+          <input class="form-control" type="text" formControlName="nome">
+        </div>
+
         <div class="mb-3">
-          <label class="form-label" for="sobrenome">Tarefa</label>
+          <label class="form-label" for="sobrenome">Mensagem</label>
           <input class="form-control" type="text" formControlName="tarefa">
         </div>
 
         <div class="grupo-de-btns">
-          <button class="btn btn-primary" style="margin-right: 6px;" type="submit">Salvar</button>
+          <button class="btn btn-primary" style="margin-right: 6px;" type="submit" [disabled]="!formDados.valid">Salvar</button>
           <button *ngIf="isEdit" (click)="retornar()" class="btn btn-danger" style="margin-right: 6px;" type="button">Cancelar</button>
           <button *ngIf="!isEdit" class="btn btn-light" type="button">Enviar notificação</button>
         </div>
       </form>
     </div>
 
-    <div *ngIf="!isEdit" class="col-xs-12 col-sm-12 col-md-6">
+    <div *ngIf="!isEdit" class="col-12" style="margin-top: 32px;">
       <app-listar></app-listar>
     </div>
 

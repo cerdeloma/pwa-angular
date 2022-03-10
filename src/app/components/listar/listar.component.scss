@@ -1,6 +1,10 @@
 .grupo-de-btns {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+
+  .primeiro-btn {
+    margin-right: 6px;
+  }
 }
 
 .isOffline {
@@ -21,8 +25,13 @@
     display: flex;
     flex-direction: column;
 
+    .primeiro-btn {
+      margin-right: 0;
+    }
+
     button {
       margin-bottom: 4px;
+      width: 100%;
     }
   }
 }

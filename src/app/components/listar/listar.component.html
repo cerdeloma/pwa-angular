@@ -1,29 +1,19 @@
-<div *ngIf="isOnline" class="mt-4 mt-md-0">
+<div *ngIf="isOnline" class="">
   <ng-container *ngIf="dados$ | async as dados; else isLoading">
 
     <ng-container *ngIf="dados.length > 0; else isEmpty">
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="col px-0 pt-0">Data</th>
-              <th class="col px-0 pt-0">Tarefa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let dado of dados">
-              <!-- <th scope="row">{{ dado.length }}</th> -->
-              <td>{{ dado?.data | date: 'dd/MM/yy' }}</td>
-              <td>{{ dado?.tarefa }}</td>
-              <td>
-                <div class="grupo-de-btns">
-                  <button class="btn btn-primary" (click)="onEdit(dado.key)">editar</button>
-                  <button class="btn btn-danger" (click)="onDelete(dado.key)">apagar</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card" style="width: 100%; margin-bottom: 6px;" *ngFor="let dado of dados">
+        <div class="card-body">
+          <h5 class="card-title" style="overflow: hidden;">{{ dado?.nome ? dado.nome : 'sem nome =/' }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted" style="overflow: hidden;">{{ dado?.data | date: 'dd/MM/yy'}}</h6>
+          <p class="card-text">{{ dado?.tarefa }}</p>
+          <div class="grupo-de-btns">
+            <button class="btn btn-primary primeiro-btn" (click)="onEdit(dado.key)">editar</button>
+            <button class="btn btn-danger" (click)="onDelete(dado.key)">apagar</button>
+          </div>
+        </div>
+      </div>
 
     </ng-container>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Dexie from 'dexie';
 import { EMPTY, of } from 'rxjs';
@@ -48,8 +48,9 @@ export class CadastroComponent implements OnInit {
 
     this.formDados = this.fb.group({
       id: null,
-      data: null,
-      tarefa: null
+      data: [null, Validators.required],
+      nome: [null, Validators.required],
+      tarefa: [null, Validators.required]
     });
   }
 
@@ -57,6 +58,7 @@ export class CadastroComponent implements OnInit {
     this.formDados.patchValue({
       id: this.id,
       data: tarefa.data,
+      nome: tarefa.nome,
       tarefa: tarefa.tarefa
     })
   }
@@ -65,11 +67,13 @@ export class CadastroComponent implements OnInit {
     const body = {
       id: (Math.random() * (100 - 10) + 0),
       data: this.formDados.get('data')?.value,
+      nome: this.formDados.get('nome')?.value,
       tarefa: this.formDados.get('tarefa')?.value
     }
 
     const tarefa = {
       data: this.formDados.get('data')?.value,
+      nome: this.formDados.get('nome')?.value,
       tarefa: this.formDados.get('tarefa')?.value
     }
 
