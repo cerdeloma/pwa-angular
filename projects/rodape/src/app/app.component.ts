@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,11 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  ngOnInit() {
-    const script = document.createElement('script');
-    script.src = 'https://frog-footer-mfe.web.app/main.js';
-    document.body.appendChild(script);
+  constructor(private router: Router) {
+    this.router.initialNavigation();
   }
-
 }
