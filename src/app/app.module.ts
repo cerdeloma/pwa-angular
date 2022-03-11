@@ -10,7 +10,6 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ListarComponent } from './components/listar/listar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './components/footer/footer.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HomeComponent } from './components/home/home.component';
@@ -22,7 +21,6 @@ import { LoginComponent } from './components/login/login.component';
     MenuComponent,
     CadastroComponent,
     ListarComponent,
-    FooterComponent,
     HomeComponent,
     LoginComponent
   ],
