@@ -1,4 +1,5 @@
-import { FooterComponent } from './../../../../src/app/components/footer/footer.component';
+import { FooterComponent } from './footer/footer.component';
+
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
