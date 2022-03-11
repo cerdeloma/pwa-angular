@@ -9,7 +9,7 @@ export class AppComponent {
 
   ngOnInit() {
     const script = document.createElement('script');
-    script.src = 'http:localhost:3000/rodape/main-es2015.js';
+    script.src = 'http://localhost:3000/rodape/main.js';
     document.body.appendChild(script);
   }
 
