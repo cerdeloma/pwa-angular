@@ -9,7 +9,7 @@ export class AppComponent {
 
   ngOnInit() {
     const script = document.createElement('script');
-    script.src = 'https://pwa-angular-e6732.web.app/rodape/main.js';
+    script.src = 'https://frog-footer-mfe.web.app/main.js';
     document.body.appendChild(script);
   }
 

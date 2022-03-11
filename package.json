@@ -7,7 +7,7 @@
     "build": "ng build --resources-output-path",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:rodape": "ng build --prod --project rodape --single-bundle --output-hashing none"
+    "build:rodape": "ng build --project rodape --single-bundle --output-hashing none"
   },
   "private": true,
   "dependencies": {
