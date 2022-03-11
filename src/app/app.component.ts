@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pwa-angular';
+
+  ngOnInit() {
+    const script = document.createElement('script');
+    script.src = 'http:localhost:3000/rodape/main-es2015.js';
+    document.body.appendChild(script);
+  }
+
 }
