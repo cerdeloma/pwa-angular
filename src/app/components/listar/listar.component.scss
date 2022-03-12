@@ -1,0 +1,37 @@
+.grupo-de-btns {
+  display: flex;
+  justify-content: flex-end;
+
+  .primeiro-btn {
+    margin-right: 6px;
+  }
+}
+
+.isOffline {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 200px;
+    margin-bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .grupo-de-btns {
+    display: flex;
+    flex-direction: column;
+
+    .primeiro-btn {
+      margin-right: 0;
+    }
+
+    button {
+      margin-bottom: 4px;
+      width: 100%;
+    }
+  }
+}

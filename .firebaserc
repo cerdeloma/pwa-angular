@@ -1,6 +1,8 @@
 {
   "projects": {
-    "default": "pwa-angular-e6732"
+    "default": "pwa-angular-e6732",
+    "app-footer": "frog-footer-mfe",
+    "the frog is offline": "pwa-angular-e6732"
   },
   "targets": {
     "pwa-angular-e6732": {

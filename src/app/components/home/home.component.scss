@@ -1,0 +1,19 @@
+.main {
+  background-color: #f1f1f1;
+  padding: 8px;
+  border-radius: 4px;
+  min-height: 50vh;
+  height: 100%;
+  margin-bottom: 12px;
+}
+
+.rodape {
+  background-color: #f1f1f1;
+  border-radius: 4px 4px 0 0;
+}
+
+@media screen and (max-width: 576px) {
+  .main {
+    border-radius: 0px;
+  }
+}

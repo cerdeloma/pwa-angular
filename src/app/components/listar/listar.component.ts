@@ -15,11 +15,23 @@ export class ListarComponent implements OnInit {
   key: any;
   isOnline!: boolean;
 
+  cacheName = '';
+  resourcesToPrecache = [
+    'src/assets/no-internet.png'
+  ];
+
   constructor(
     private appService: AppServicesService,
     private router: Router,
     private onlineOfflineService: OnlineOfflineService
     ) {
+      window.addEventListener('install', (event: any) => {
+        event.waitUntil(
+          caches.open(this.cacheName).then((cache: any) => {
+            {cache.addAll(this.resourcesToPrecache) }
+          })
+        )
+      });
     }
 
   ngOnInit(): void {
@@ -34,7 +46,7 @@ export class ListarComponent implements OnInit {
 
   onDelete(key?: any) {
     this.appService.deleteData(key).subscribe(
-      () => window.location.reload()
+      () => this.getAll()
     );
   }
 

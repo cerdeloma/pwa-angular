@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Dexie } from 'dexie';
 import { Inject, Injectable, Injector } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,7 @@ export abstract class BaseService<T extends {id: any}> {
     return this.angularFireDb.list(this.apiDb)
     .snapshotChanges()
     .pipe(
+      tap(x => x.reverse()),
       map((changes: any) => {
         return changes.map((data: any) => ({key: data.payload.key, ...data.payload.val() as any}))
       })

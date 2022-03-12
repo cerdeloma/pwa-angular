@@ -7,9 +7,15 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pwa-angular';
 
   constructor(private authService: AuthService) {
     this.authService.obterUsuarioLogado();
   }
+
+  ngOnInit() {
+    const script = document.createElement('script');
+    script.src = 'https://frog-footer-mfe.web.app/main.js';
+    document.body.appendChild(script);
+  }
+
 }

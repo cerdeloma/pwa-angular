@@ -1,12 +1,10 @@
-header {
-  padding: 24px;
+footer {
+  height: 40px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  h1 {
+  p {
     margin: 0;
-    padding: 10px;
   }
 }
