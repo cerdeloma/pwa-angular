@@ -13,7 +13,13 @@
         <input class="form-control" type="password" [(ngModel)]="usuario.senha">
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="logar()">Entrar</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="logar()"
+        >
+        Entrar
+      </button>
       <button class="btn btn-info" (click)="entrarComGoogle()">Entrar com Google</button>
       <p>Criar uma nova conta <a href="#" routerLink="/cadastrar">clique aqui</a></p>
 

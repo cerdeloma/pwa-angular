@@ -34,25 +34,24 @@
 @media screen and (max-width: 576px) {
   .main {
     display: block;
-    height: 90vh;
+    height: 100vh;
 
     h1 {
-      padding: 24px;
-      font-size: 3rem;
+      padding: 12px;
+      font-size: 2rem;
     }
 
     label {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     input {
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
 
     button {
-      margin-top: 24px;
       padding: 12px;
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
 
     .form-container {
