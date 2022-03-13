@@ -42,7 +42,14 @@ export class AuthService {
   }
 
   obterUsuarioLogado() {
-    return this.angularFireAuth.authState;
+    return this.angularFireAuth.authState.subscribe((res: any) => {
+      console.log(res);
+      window.sessionStorage.setItem('token', res?.uid);
+    });
+  }
+
+  get logado() {
+    return sessionStorage.getItem('token') ? true : false;
   }
 
   logout() {
