@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, senha).then((res: any) => {
       this.usuario.email = '';
       this.usuario.senha = '';
-      this.router.navigate(['redirect']);
+      this.router.navigate(['home']);
     })
   }
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginWithGoogle(email, senha).then((res: any) => {
       this.usuario.email = '';
       this.usuario.senha = '';
-      this.router.navigate(['redirect']);
+      this.router.navigate(['home']);
     })
   }
 

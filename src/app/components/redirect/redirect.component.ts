@@ -13,11 +13,11 @@ export class RedirectComponent implements OnInit {
     private router: Router,
     private authService: AuthService
     ) {
-    this.authService.obterUsuarioLogado();
-    setTimeout(() => {
-      window.location.reload();
-    }, 10);
-    this.router.navigate(['home']);
+    // this.authService.obterUsuarioLogado();
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 10);
+    // this.router.navigate(['home']);
   }
 
   ngOnInit(): void {

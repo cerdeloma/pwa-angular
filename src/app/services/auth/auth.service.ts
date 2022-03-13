@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from '@firebase/auth';
 import firebase from 'firebase/compat/app';
 import { Subject } from 'rxjs';
 
@@ -41,14 +42,7 @@ export class AuthService {
   }
 
   obterUsuarioLogado() {
-    return this.angularFireAuth.authState.subscribe(
-      (res: any) => {
-        if (res?.uid) {
-          window.sessionStorage.setItem('idToken', res.uid);
-          window.sessionStorage.setItem('emailUser', res.email);
-        }
-      }
-    );
+    return this.angularFireAuth.authState;
   }
 
   logout() {
