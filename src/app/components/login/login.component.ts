@@ -25,11 +25,7 @@ export class LoginComponent implements OnInit {
 
   logar() {
     const {email, senha} = this.usuario;
-    this.authService.login(email, senha).then((res: any) => {
-      this.usuario.email = '';
-      this.usuario.senha = '';
-      this.router.navigate(['home']);
-    })
+    this.authService.login(email, senha);
   }
 
   cadastrar() {
@@ -43,11 +39,7 @@ export class LoginComponent implements OnInit {
 
   entrarComGoogle() {
     const {email, senha} = this.usuario;
-    this.authService.loginWithGoogle(email, senha).then((res: any) => {
-      this.usuario.email = '';
-      this.usuario.senha = '';
-      this.router.navigate(['home']);
-    })
+    this.authService.loginWithGoogle(email, senha).then(() => this.router.navigate(['home']));
   }
 
 }

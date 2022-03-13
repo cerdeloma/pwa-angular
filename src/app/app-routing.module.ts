@@ -14,11 +14,6 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [IsloggedGuard]
   },
-  // {
-    //   path: 'redirect',
-    //   component: RedirectComponent,
-  //   canActivate: [AuthGuard]
-  // },
   {
     path: 'home',
     component: HomeComponent,

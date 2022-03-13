@@ -1,3 +1,4 @@
+import { SessionStorageService } from './../../services/session-storage/session-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,27 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  emailUsuario!: any;
-  userId!: any;
+  emailUsuario: any;
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private ss: SessionStorageService
   ) {
-    this.emailUsuario = window.sessionStorage.getItem('emailUser');
-    this.userId = window.sessionStorage.getItem('idToken');
   }
 
   ngOnInit(): void {
+    this.emailUsuario = this.ss.getToSession('email');
   }
 
   logout() {
-    window.sessionStorage.removeItem('idToken');
-    window.sessionStorage.removeItem('emailUser');
-    this.userId = null;
-    this.emailUsuario = null;
     this.authService.logout();
-    this.router.navigate(['login']);
   }
 
 }

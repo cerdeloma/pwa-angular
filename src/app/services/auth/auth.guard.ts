@@ -8,8 +8,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 })
 export class AuthGuard implements CanActivate {
 
-  user!: boolean;
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -20,7 +18,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
       if (this.authService.logado) {
-        return true
+        return true;
       }
       this.router.navigate(['login']);
       return false;

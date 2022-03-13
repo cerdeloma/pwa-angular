@@ -1,8 +1,8 @@
+import { SessionStorageService } from './../session-storage/session-storage.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '@firebase/auth';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,10 @@ import { Subject } from 'rxjs';
 export class AuthService {
 
   constructor(
-    private angularFireAuth: AngularFireAuth
-  ) {
+    private angularFireAuth: AngularFireAuth,
+    private router: Router,
+    private ss: SessionStorageService
+    ) {
   }
 
   async cadastrar(email: string, password: string) {
@@ -23,13 +25,21 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string) {
-    try{
-      return await this.angularFireAuth.signInWithEmailAndPassword(email, password);
-    } catch(err) {
-      console.log('erro ao logar', err);
-      return null;
-    }
+  // async login(email: string, password: string) {
+  //   try{
+  //     return await this.angularFireAuth.signInWithEmailAndPassword(email, password);
+  //   } catch(err) {
+  //     console.log('erro ao logar', err);
+  //     return null;
+  //   }
+  // }
+
+  login(email: string, password: string): any {
+    return this.angularFireAuth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      window.location.reload();
+      this.router.navigate(['home'])
+    });
   }
 
   async loginWithGoogle(email: string, password: string) {
@@ -43,17 +53,25 @@ export class AuthService {
 
   obterUsuarioLogado() {
     return this.angularFireAuth.authState.subscribe((res: any) => {
-      console.log(res);
-      window.sessionStorage.setItem('token', res?.uid);
+      if (res) {
+        this.ss.addToSession('token', res?.uid);
+        this.ss.addToSession('email', res?.email);
+      }
+      return null;
     });
   }
 
   get logado() {
-    return sessionStorage.getItem('token') ? true : false;
+    return this.ss.getToSession('token') ? true : false;
   }
 
   logout() {
-    this.angularFireAuth.signOut();
+    this.angularFireAuth.signOut().then(() => {
+      this.ss.removeToSession('token');
+      this.ss.removeToSession('email');
+      window.location.reload();
+      this.router.navigate(['login']);
+    });
   }
 
 }
