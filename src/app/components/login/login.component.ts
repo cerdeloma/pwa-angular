@@ -28,18 +28,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, senha);
   }
 
-  cadastrar() {
-    const {email, senha} = this.usuario;
-    this.authService.login(email, senha).then((res: any) => {
-      console.log('email cadastrado', res);
-      this.usuario.email = '';
-      this.usuario.senha = '';
-    })
-  }
-
   entrarComGoogle() {
     const {email, senha} = this.usuario;
-    this.authService.loginWithGoogle(email, senha).then(() => this.router.navigate(['home']));
+    this.authService.loginWithGoogle(email, senha)
+    .then(() => {
+      window.location.reload();
+      this.router.navigate(['home']);
+    });
   }
 
 }
