@@ -38,7 +38,7 @@ export class AuthService {
     return this.angularFireAuth.signInWithEmailAndPassword(email, password)
     .then(() => {
       window.location.reload();
-      this.router.navigate(['home'])
+      this.router.navigate(['home']);
     });
   }
 
@@ -67,9 +67,9 @@ export class AuthService {
 
   logout() {
     this.angularFireAuth.signOut().then(() => {
+      window.location.reload();
       this.ss.removeToSession('token');
       this.ss.removeToSession('email');
-      window.location.reload();
       this.router.navigate(['login']);
     });
   }

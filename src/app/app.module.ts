@@ -17,7 +17,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { RedirectComponent } from './components/redirect/redirect.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -28,8 +27,7 @@ firebase.initializeApp(environment.firebaseConfig);
     CadastroComponent,
     ListarComponent,
     HomeComponent,
-    LoginComponent,
-    RedirectComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
