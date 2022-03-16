@@ -66,9 +66,19 @@ export class CadastroComponent implements OnInit {
     })
   }
 
+  generateRandomString(num: number) {
+     const char = "ABCDEFGHIJKLMNOPQRSTUVXZabcdefghijklmnopqrstuvxz0123456789";
+     let result = ' ';
+     const charLength = char.length;
+     for (let i = 0; i - num; i++) {
+       result += char.charAt(Math.floor(Math.random() * charLength));
+     }
+     return result;
+  }
+
   submitForm() {
     const body = {
-      id: (Math.random() * (100 - 10) + 0),
+      id: this.generateRandomString(15),
       id_usuario: this.ss.getToSession('token'),
       data: this.formDados.get('data')?.value,
       nome: this.formDados.get('nome')?.value,
