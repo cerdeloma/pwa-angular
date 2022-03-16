@@ -1,12 +1,47 @@
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:undefined" routerLink="/home">Home</a>
-      <span>Bem vindo, {{ emailUsuario ? emailUsuario : '' }}</span>
-      <a class="navbar-brand" href="javascript:undefined" (click)="logout()">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light pb-3 pt-2">
+  <div class="container-fluid">
+    <span class="navbar-text">
+      Bem vindo, {{ emailUsuario ? emailUsuario : '' }}
+    </span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a
+            class="navbar-brand"
+            href="javascript:undefined"
+            routerLink="/home"
+            >
+            Home
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="javascript:undefined"
+            (click)="logout()"
+            >
+            Logout
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
-</div>
+  </div>
+</nav>
 
 <div class="titulo">
   <h1>The Frog is Offline</h1>
