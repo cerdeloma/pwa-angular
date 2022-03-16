@@ -5,12 +5,18 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { AuthGuard } from './services/auth/auth.guard';
+import { CadastrarUsuarioComponent } from './components/cadastrar-usuario/cadastrar-usuario.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [IsloggedGuard]
+  },
+  {
+    path: 'cadastrar',
+    component: CadastrarUsuarioComponent,
     canActivate: [IsloggedGuard]
   },
   {

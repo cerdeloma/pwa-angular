@@ -1,3 +1,4 @@
+import { SessionStorageService } from './../../services/session-storage/session-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +30,7 @@ export class CadastroComponent implements OnInit {
     private router: Router,
     private actRoute: ActivatedRoute,
     private onlineOfflineService: OnlineOfflineService,
+    private ss: SessionStorageService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class CadastroComponent implements OnInit {
 
     this.formDados = this.fb.group({
       id: null,
+      idUsuario: null,
       data: [null, Validators.required],
       nome: [null, Validators.required],
       tarefa: [null, Validators.required]
@@ -63,9 +66,20 @@ export class CadastroComponent implements OnInit {
     })
   }
 
+  generateRandomString(num: number) {
+     const char = "ABCDEFGHIJKLMNOPQRSTUVXZabcdefghijklmnopqrstuvxz0123456789";
+     let result = ' ';
+     const charLength = char.length;
+     for (let i = 0; i - num; i++) {
+       result += char.charAt(Math.floor(Math.random() * charLength));
+     }
+     return result;
+  }
+
   submitForm() {
     const body = {
-      id: (Math.random() * (100 - 10) + 0),
+      id: this.generateRandomString(15),
+      id_usuario: this.ss.getToSession('token'),
       data: this.formDados.get('data')?.value,
       nome: this.formDados.get('nome')?.value,
       tarefa: this.formDados.get('tarefa')?.value
@@ -82,7 +96,7 @@ export class CadastroComponent implements OnInit {
         () => {
           console.log('editado com sucesso');
           this.formDados.reset();
-          this.router.navigate(['listar']);
+          this.router.navigate(['home']);
         }
       );
     } else if (!this.isEdit && this.onlineOfflineService.isOnline) {

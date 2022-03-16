@@ -68,8 +68,7 @@ export class AuthService {
   logout() {
     this.angularFireAuth.signOut().then(() => {
       window.location.reload();
-      this.ss.removeToSession('token');
-      this.ss.removeToSession('email');
+      window.sessionStorage.clear();
       this.router.navigate(['login']);
     });
   }
